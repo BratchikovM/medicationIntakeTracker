@@ -4,7 +4,7 @@ import {
 } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Redirect } from 'react-router'
-import api, { setToken } from '../../api'
+import api, { setToken } from '../../../api'
 
 export const SignUp = () => {
   const [form] = Form.useForm()
