@@ -1,0 +1,36 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:12.1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      PSQL_HOST: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_PORT: 5432
+    volumes:
+      - /app/node_modules
+      - ./backend/config:/app/config
+      - ./backend/src:/app/src
+      - ./backend/bin:/app/bin
+    ports:
+      - "4000:4000"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
