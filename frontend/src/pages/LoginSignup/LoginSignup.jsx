@@ -3,8 +3,8 @@ import {
   Card, Space, Tabs,
 } from 'antd'
 import './login-signup.scss'
-import { Login } from '../Login/Login'
-import { SignUp } from '../SignUp/SignUp'
+import { Login } from './Login/Login'
+import { SignUp } from './SignUp/SignUp'
 
 const { TabPane } = Tabs
 
